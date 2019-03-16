@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GridGenerator {
 
-  @Value("${grid.width:10}")
+  @Value("${grid.width:9}")
   private Integer size;
 
   public GridGenerator(){
