@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DefaultController{
+public class GridController{
   @Autowired
   private GridGenerator generator;
 
-  private static final String DEFAULT_ENDPOINT = "/";
+  private static final String GRID_LATEST_ENDPOINT = "/grid/latest";
 
-  @RequestMapping(value = DEFAULT_ENDPOINT, method = RequestMethod.GET)
-  public String defaultMapping(){
-    return "Hello! " + this.generator.GenerateGridFromCoordinates();
+  @RequestMapping(value = GRID_LATEST_ENDPOINT, method = RequestMethod.GET)
+  public String getLatestGrid(){
+    return this.generator.GenerateGridFromCoordinates();
   }
 
 }
