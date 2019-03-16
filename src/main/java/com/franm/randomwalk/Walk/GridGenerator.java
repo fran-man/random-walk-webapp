@@ -13,7 +13,12 @@ public class GridGenerator {
 
   }
 
-  public String GenerateGridFromCoordinates(){
-    return size.toString();
+  public String GenerateGridFromCoordinates(long xCoord){
+    StringBuilder builder = new StringBuilder("|");
+    for(long i = 0; i < this.size; i++){
+      builder.append(i == xCoord ? "+" : "-");
+    }
+    builder.append("|");
+    return builder.toString();
   }
 }
