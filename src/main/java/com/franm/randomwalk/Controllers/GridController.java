@@ -19,7 +19,11 @@ public class GridController{
 
   @RequestMapping(value = GRID_LATEST_ENDPOINT, method = RequestMethod.GET)
   public String getLatestGrid(){
-    return this.generator.GenerateGridFromCoordinates(this.coordHelper.IncrementCoordinates());
+    long xCoord = this.coordHelper.IncrementCoordinates();
+    if(this.generator.isGameWon(xCoord)){
+      this.coordHelper.ResetCoords();
+    }
+    return this.generator.GenerateGridFromCoordinates(xCoord);
   }
 
 }

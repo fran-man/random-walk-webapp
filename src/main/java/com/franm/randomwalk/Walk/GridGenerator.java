@@ -14,11 +14,22 @@ public class GridGenerator {
   }
 
   public String GenerateGridFromCoordinates(long xCoord){
-    StringBuilder builder = new StringBuilder("|");
+    StringBuilder builder = (xCoord == -1 ? new StringBuilder("+") : new StringBuilder("|"));
+
     for(long i = 0; i < this.size; i++){
       builder.append(i == xCoord ? "+" : "-");
     }
-    builder.append("|");
+
+    if(xCoord == this.size){
+      builder.append("+");
+    }
+    else{
+      builder.append("|");
+    }
     return builder.toString();
+  }
+
+  public boolean isGameWon(long xCoord){
+    return xCoord == -1 || xCoord == this.size; //TODO: Long vs int does not always work
   }
 }
