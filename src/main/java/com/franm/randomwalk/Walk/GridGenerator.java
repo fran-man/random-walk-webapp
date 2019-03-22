@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 public class GridGenerator {
 
   @Value("${grid.width:9}")
-  private Integer size;
+  private int size;
 
   public GridGenerator(){
 
   }
 
-  public String GenerateGridFromCoordinates(long xCoord){
+  public String GenerateGridFromCoordinates(int xCoord){
     StringBuilder builder = (xCoord == -1 ? new StringBuilder("+") : new StringBuilder("|"));
 
-    for(long i = 0; i < this.size; i++){
+    for(int i = 0; i < this.size; i++){
       builder.append(i == xCoord ? "+" : "-");
     }
 
@@ -29,7 +29,7 @@ public class GridGenerator {
     return builder.toString();
   }
 
-  public boolean isGameWon(long xCoord){
-    return xCoord == -1 || xCoord == this.size; //TODO: Long vs int does not always work
+  public boolean isGameWon(int xCoord){
+    return xCoord == -1 || xCoord == this.size;
   }
 }

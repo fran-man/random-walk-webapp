@@ -1,14 +1,17 @@
 package com.franm.randomwalk.Coordinates;
 
-import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import java.util.Random;
 
 @Component
 public class CoordinateHelper {
 
-  private AtomicLong x = new AtomicLong(5L); //Middle
-  private AtomicLong start = new AtomicLong(5L); //Middle
+  Logger logger = LoggerFactory.getLogger(CoordinateHelper.class);
+
+  private int x = 5;
+  private final int start = 5; //Middle
 
   private final Random ran = new Random();
 
@@ -16,15 +19,19 @@ public class CoordinateHelper {
 
   }
 
-  public long IncrementCoordinates(){
-    return (this.ran.nextInt(2) % 2 == 0) ? this.x.incrementAndGet() : this.x.decrementAndGet();
+  public int IncrementCoordinates(){
+    int returnVal = (this.ran.nextInt(2) % 2 == 0) ? ++x : --x;
+    logger.debug("x = {}", returnVal);
+    return returnVal;
   }
 
-  public long getXCoord(){
-    return this.x.longValue();
+  public int getXCoord(){
+    logger.debug("x = {}", this.x);
+    return this.x;
   }
 
   public void ResetCoords(){
+    this.logger.info("Resetting...");
     this.x = this.start;
   }
 }
