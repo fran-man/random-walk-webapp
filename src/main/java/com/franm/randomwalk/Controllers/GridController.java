@@ -29,7 +29,7 @@ public class GridController{
   @RequestMapping(value = GRID_LATEST_ENDPOINT, method = RequestMethod.GET, produces="text/plain")
   public ResponseEntity<String> getLatestGrid(){
     List<Integer> coords = this.coordHelper.IncrementCoordinates();
-    if(this.generator.isGameWon(coords.get(0))){
+    if(this.generator.isGameWon(coords.get(0), coords.get(1))){
       logger.info("Game won!");
       this.coordHelper.ResetCoords();
     }

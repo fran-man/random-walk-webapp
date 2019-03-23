@@ -43,11 +43,6 @@ public class CoordinateHelper {
     return Arrays.asList(this.x,this.y);
   }
 
-  public int getXCoord(){
-    logger.debug("x = {}", this.x);
-    return this.x;
-  }
-
   public void ResetCoords(){
     this.logger.info("Resetting...");
     this.x = this.startx;

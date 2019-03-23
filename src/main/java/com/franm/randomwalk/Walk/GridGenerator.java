@@ -39,7 +39,7 @@ public class GridGenerator {
     return builder.toString();
   }
 
-  public boolean isGameWon(int xCoord){
-    return xCoord == -1 || xCoord == this.width;
+  public boolean isGameWon(int xCoord, int yCoord){
+    return xCoord == -1 || xCoord == this.width || yCoord == -1 || yCoord == this.height;
   }
 }
